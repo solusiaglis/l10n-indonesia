@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_pajak_io_transaction_list" model="ir.ui.view">
+        <field name="name">l10n.id.pajak.io.transaction.list</field>
+        <field name="model">l10n.id.pajak.io.transaction</field>
+        <field name="arch" type="xml">
+            <list
+                string="Transaksi Pajak.io"
+                decoration-danger="transaction_status == 'DITOLAK'"
+                decoration-success="transaction_status == 'APPROVAL_SUKSES'"
+                decoration-warning="invoice_status in ('MENUNGGU_PEMBATALAN', 'MENUNGGU_PENGGANTI')"
+            >
+                <field name="move_id" />
+                <field name="transaction_id" />
+                <field name="no_faktur" />
+                <field name="no_invoice" />
+                <field name="transaction_status" />
+                <field name="invoice_status" />
+                <field name="is_replacement" />
+                <field name="submitted_at" />
+                <field name="last_checked_at" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_pajak_io_transaction_form" model="ir.ui.view">
+        <field name="name">l10n.id.pajak.io.transaction.form</field>
+        <field name="model">l10n.id.pajak.io.transaction</field>
+        <field name="arch" type="xml">
+            <form string="Transaksi Pajak.io" create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group string="Identifikasi">
+                            <field name="move_id" />
+                            <field name="transaction_id" />
+                            <field name="no_faktur" />
+                            <field name="no_invoice" />
+                        </group>
+                        <group string="Status">
+                            <field name="transaction_status" />
+                            <field name="invoice_status" />
+                            <field name="is_replacement" />
+                            <field
+                                name="replaced_no_faktur"
+                                invisible="not is_replacement"
+                            />
+                        </group>
+                    </group>
+                    <group string="Timestamps">
+                        <field name="submitted_at" />
+                        <field name="last_checked_at" />
+                    </group>
+                    <group string="PDF">
+                        <field name="pdf_url" widget="url" />
+                    </group>
+                    <notebook>
+                        <page string="Request Payload">
+                            <field name="request_payload" widget="code" />
+                        </page>
+                        <page string="Response Payload">
+                            <field name="response_payload" widget="code" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_pajak_io_transaction" model="ir.actions.act_window">
+        <field name="name">Transaksi Pajak.io</field>
+        <field name="res_model">l10n.id.pajak.io.transaction</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="menu_pajak_io_transaction"
+        name="Transaksi Pajak.io"
+        parent="account.menu_finance_configuration"
+        action="action_pajak_io_transaction"
+        sequence="91"
+    />
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_pajak_io_submit_wizard_form" model="ir.ui.view">
+        <field name="name">l10n.id.pajak.io.submit.wizard.form</field>
+        <field name="model">l10n.id.pajak.io.submit.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Submit Invoice ke Pajak.io">
+                <group>
+                    <field name="move_id" readonly="1" />
+                    <field name="partner_id" readonly="1" />
+                    <field name="kode_transaksi" readonly="1" />
+                </group>
+                <group string="Opsi Pengiriman">
+                    <field name="is_replacement" />
+                    <field
+                        name="replaced_transaction_id"
+                        invisible="not is_replacement"
+                        required="is_replacement"
+                    />
+                    <field
+                        name="replaced_no_faktur"
+                        invisible="not is_replacement"
+                        readonly="1"
+                    />
+                </group>
+                <footer>
+                    <button
+                        name="action_submit"
+                        string="Submit ke Pajak.io"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Batal" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

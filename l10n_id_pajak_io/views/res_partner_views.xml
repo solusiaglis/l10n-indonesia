@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_partner_form_pajak_io" model="ir.ui.view">
+        <field name="name">res.partner.form.pajak.io</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="l10n_id_efaktur_coretax.res_partner_tax_form_view" />
+        <field name="arch" type="xml">
+            <!-- Add NITKU field after l10n_id_tku (added by l10n_id_efaktur_coretax) -->
+            <field name="l10n_id_tku" position="after">
+                <field name="l10n_id_nitku" />
+            </field>
+        </field>
+    </record>
+</odoo>

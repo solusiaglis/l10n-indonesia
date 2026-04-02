@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pajak_io_config_manager,pajak.io.config.manager,model_l10n_id_pajak_io_config,account.group_account_manager,1,1,1,1
+access_pajak_io_config_user,pajak.io.config.user,model_l10n_id_pajak_io_config,account.group_account_user,1,0,0,0
+access_pajak_io_transaction_manager,pajak.io.transaction.manager,model_l10n_id_pajak_io_transaction,account.group_account_manager,1,1,1,1
+access_pajak_io_transaction_user,pajak.io.transaction.user,model_l10n_id_pajak_io_transaction,account.group_account_user,1,0,0,0
+access_pajak_io_submit_wizard,pajak.io.submit.wizard,model_l10n_id_pajak_io_submit_wizard,account.group_account_user,1,1,1,1
+access_pajak_io_cancel_wizard,pajak.io.cancel.wizard,model_l10n_id_pajak_io_cancel_wizard,account.group_account_user,1,1,1,1
+access_pajak_io_test_connection,pajak.io.test.connection,model_l10n_id_pajak_io_test_connection,account.group_account_manager,1,1,1,1

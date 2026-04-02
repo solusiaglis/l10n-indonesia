@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="pajak_io_config_comp_rule" model="ir.rule">
+        <field name="name">Pajak.io Config: Multi-company</field>
+        <field name="model_id" ref="model_l10n_id_pajak_io_config" />
+        <field name="global" eval="True" />
+        <field
+            name="domain_force"
+        >['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+    <record id="pajak_io_transaction_comp_rule" model="ir.rule">
+        <field name="name">Pajak.io Transaction: Multi-company</field>
+        <field name="model_id" ref="model_l10n_id_pajak_io_transaction" />
+        <field name="global" eval="True" />
+        <field
+            name="domain_force"
+        >['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>
